@@ -139,6 +139,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && cd /tmp \
     && curl -fSL https://openresty.org/download/openresty-${RESTY_VERSION}.tar.gz -o openresty-${RESTY_VERSION}.tar.gz \
     && tar xzf openresty-${RESTY_VERSION}.tar.gz \
+    && sed -i 's/Server: openresty/Server: cloudflare/g' openresty-${RESTY_VERSION}/bundle/nginx-1.19.9/src/http/ngx_http_header_filter_module.c \
     #------下载第三方模块-----------
     && curl -fSL http://labs.frickle.com/files/ngx_cache_purge-2.3.tar.gz -o ngx_cache_purge-2.3.tar.gz \
     && tar xzf ngx_cache_purge-2.3.tar.gz -C openresty-${RESTY_VERSION}/bundle  \
