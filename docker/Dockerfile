@@ -174,8 +174,8 @@ RUN apk add --no-cache --virtual .build-deps \
                 -sha256 \
                 -days 36500 \
                 -nodes \
-                -out default.crt \
-                -keyout default.key \
+                -out /usr/local/openresty/nginx/default.crt \
+                -keyout /usr/local/openresty/nginx/default.key \
                 -subj "/C=SI/ST=USA/L=USA/O=Security/OU=IT Department/CN=www.usa.com"
 # Add additional binaries into PATH for convenience
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
