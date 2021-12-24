@@ -173,7 +173,8 @@ RUN apk add --no-cache --virtual .build-deps \
 		-x509 \
 		-subj '/O=Cloudflare, Inc./CN=Cloudflare Inc ECC CA-3/L=San Francisco/ST=California/C=US' \
 		-keyout /usr/local/openresty/nginx/default.key \
-		-out /usr/local/openresty/nginx/default.crt
+		-out /usr/local/openresty/nginx/default.crt \
+    && apk add -U tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && apk del tzdata
 
 # Add additional binaries into PATH for convenience
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
